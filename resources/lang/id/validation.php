@@ -4,8 +4,8 @@ return [
     'required' => 'Kolom :attribute wajib diisi.',
     'attributes' => [
         'name' => 'nama',
-        'name' => 'nama',
         'role_id' => 'level',
+        'phone' => 'telepon',
     ],
     'regex' => 'Kolom :attribute harus memenuhi format yang benar.',
     'email' => 'Kolom :attribute harus berupa alamat email yang valid.',

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Sistem Pembayaran Pendidikan | SMA Pangeran Antasari</title>
+    <title>Sistem Pembayaran Pendidikan | SMK Negeri Medan</title>
 
-    <link rel="shortcut icon" href="{{ asset('assets/img/me/Logopotensiutama.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/me/school-logo.png') }}" type="image/x-icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">

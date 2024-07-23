@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     }); 
 
     Route::prefix('employee')->middleware(['role:2'])->name('employee.')->group(function () {
-        // Route::resource('/users', \App\Http\Controllers\Employee\UserController::class)->names('users');
+        Route::resource('/users', \App\Http\Controllers\Employee\UserController::class)->names('users');
     }); 
 
     Route::prefix('teacher')->middleware(['role:3'])->name('teacher.')->group(function () {

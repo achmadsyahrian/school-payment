@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('classroom_id');
             $table->string('nis')->unique();
+            $table->enum('gender', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->string('address');
             $table->date('birth_date');
             $table->timestamps();
