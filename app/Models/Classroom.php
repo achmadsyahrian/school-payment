@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

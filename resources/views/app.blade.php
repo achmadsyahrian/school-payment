@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Sistem Pembayaran Pendidikan | SMK Negeri Medan</title>
+    <title>Sistem Pembayaran Pendidikan | {{ config('app.name') }}</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/img/me/school-logo.png') }}" type="image/x-icon">
 

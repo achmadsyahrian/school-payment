@@ -18,7 +18,7 @@ return [
         'file' => 'Ukuran file :attribute tidak boleh melebihi :max kilobyte.', 
         'string' => 'Panjang karakter :attribute tidak boleh melebihi :max karakter.', 
     ],
-    'unique' => 'Data :attribute sudah terdaftar dalam sistem.',
+    'unique' => 'Data :attribute sudah terdaftar dalam sistem, harap cek kembali.',
     'image' => 'Kolom :attribute harus berupa file gambar.',
     'numeric' => 'Kolom :attribute hanya boleh berisi angka.',
     'integer' => 'Kolom :attribute hanya boleh berisi angka.',

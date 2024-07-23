@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('spp_fee', 10, 2);
+            $table->decimal('spp_fee', 10, 0);
             $table->unsignedBigInteger('user_id'); // wali kelas
             $table->timestamps();
 

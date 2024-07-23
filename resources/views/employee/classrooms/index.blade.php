@@ -7,7 +7,7 @@
    <div class="section-header">
       <h1>Kelas</h1>
       <div class="section-header-button">
-         <a href="{{ route('employee.users.create') }}" class="btn btn-primary">Tambah</a>
+         <a href="{{ route('employee.classrooms.create') }}" class="btn btn-primary">Tambah</a>
       </div>
       <div class="section-header-breadcrumb">
          <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
@@ -18,7 +18,7 @@
    <div class="section-body">
       <h2 class="section-title">Kelas</h2>
       <p class="section-lead">
-         Kelola dan pantau informasi kelas di sini, termasuk pengaturan biaya SPP dan informasi wali kelas
+         Atur dan perbarui informasi kelas dengan mudah, termasuk biaya SPP dan wali kelas yang bertanggung jawab
       </p>
    
       <div class="row mt-4">
@@ -31,7 +31,7 @@
                   <div class="float-right">
                      <div class="input-group">
                         <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">Pencarian Lanjutan</button>
-                        <form action="{{ route('employee.users.index') }}" method="GET" style="display:inline;">
+                        <form action="{{ route('employee.classrooms.index') }}" method="GET" style="display:inline;">
                            <button type="submit" class="btn btn-secondary ml-3">Reset Pencarian</button>
                         </form>
                      </div>
@@ -43,41 +43,37 @@
                         <tr>
                            <th>#</th>
                            <th>Nama</th>
-                           <th>Username</th>
-                           <th>No Telepon</th>
+                           <th>Wali Kelas</th>
+                           <th>Biaya SPP / Bulan</th>
                            <th>Aksi</th>
                         </tr>
                         @forelse ($data as $item)
                            <tr>
                               <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
                               <td>
+                                 {{ $item->name }}
+                             </td>
+                              <td>
                                  <div class="d-flex align-items-center">
-                                    @if ($item->photo)
-                                       <img alt="image" src="{{ asset('storage/photos/user/' . $item->photo) }}" class="rounded-circle" style="object-fit: cover" width="35" height="35" data-toggle="title" title="">
+                                    @if ($item->teacher->photo)
+                                       <img alt="image" src="{{ asset('storage/photos/user/' . $item->teacher->photo) }}" class="rounded-circle" style="object-fit: cover" width="35" height="35" data-toggle="title" title="">
                                     @else
                                        <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle" width="35" data-toggle="title" title="">
                                     @endif
                                      <div class="ml-3">
-                                         <div>{{ $item->name }}</div>
+                                         <div>{{ $item->teacher->name }}</div>
                                          <div>
-                                             <a href="mailto:{{ $item->email }}">{{ $item->email ?? '--' }}</a>
+                                             <a href="#">{{ $item->teacher->phone ?? '--' }}</a>
                                          </div>
                                      </div>
                                  </div>
-                             </td>
-                              <td>
-                                 {{ $item->username }}
                               </td>
                               <td>
-                                 @if ($item->phone)
-                                    <div class="badge badge-primary"><i class="fas fa-mobile-alt"></i> {{ $item->phone }}</div>
-                                 @else
-                                    --
-                                 @endif
+                                 <div class="badge badge-success"><i class="fas fa-money-bill-wave"></i> Rp. {{ number_format($item->spp_fee, 0, ',', '.') }}</div>
                               </td>
                               <td>
-                                 <a href="{{ route('employee.users.edit', [$item]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                 <form class="d-inline" action="{{ route('employee.users.destroy', $item) }}" method="post" id="delete-data-{{ $item->id }}">
+                                 <a href="{{ route('employee.classrooms.edit', [$item]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                 <form class="d-inline" action="{{ route('employee.classrooms.destroy', $item) }}" method="post" id="delete-data-{{ $item->id }}">
                                     @method('delete')
                                     @csrf
                                     <button type="button" class="btn btn-danger btn-action" onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah anda yakin ingin menghapus pegawai ini?', 'delete-data-{{ $item->id }}')" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
@@ -99,5 +95,5 @@
    </div>
 </div>
 
-@include('employee.users.modal')
+@include('employee.classrooms.modal')
 @endsection

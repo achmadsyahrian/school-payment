@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
        <div class="sidebar-brand">
-          <a href="/"><img src="{{ asset('assets/img/me/school-logo.png') }}" width="30" alt=""> SMK Negeri Medan</a>
+          <a href="/"><img src="{{ asset('assets/img/me/school-logo.png') }}" width="30" alt=""> {{ config('app.name') }}</a>
        </div>
        <div class="sidebar-brand sidebar-brand-sm">
           <a href="/">

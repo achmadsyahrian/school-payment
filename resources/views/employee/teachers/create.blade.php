@@ -8,7 +8,7 @@
       <div class="section-header-back">
          <a href="{{ route('employee.teachers.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
       </div>
-      <h1>Tambah Wali kelas</h1>
+      <h1>Tambah</h1>
       <div class="section-header-breadcrumb">
          <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
          <div class="breadcrumb-item active"><a href="{{ route('employee.teachers.index') }}">Wali kelas</a></div>
