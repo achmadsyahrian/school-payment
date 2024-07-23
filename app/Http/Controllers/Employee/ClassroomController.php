@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
+        $data = Classroom::paginate(10);
+
+        return view('employee.classrooms.index', compact('data'));
     }
 
     /**

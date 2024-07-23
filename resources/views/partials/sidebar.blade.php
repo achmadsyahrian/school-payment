@@ -18,7 +18,8 @@
  
           <li class="menu-header">Manajemen</li>
           <li class="{{ Request::is('*users*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.users.index') }}"><i class="fas fa-user-cog"></i> <span>Pegawai</span></a></li>
-          <li class="{{ Request::is('*classrooms*') ? 'active' : '' }}"><a class="nav-link" href=""><i class="fas fa-chalkboard-teacher"></i> <span>Kelas</span></a></li>
+          <li class="{{ Request::is('*teachers*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.teachers.index') }}"><i class="fas fa-chalkboard-teacher"></i> <span>Wali Kelas</span></a></li>
+          <li class="{{ Request::is('*classrooms*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.classrooms.index') }}"><i class="fas fa-chalkboard"></i> <span>Kelas</span></a></li>
           <li class="{{ Request::is('*students*') ? 'active' : '' }}"><a class="nav-link" href=""><i class="fas fa-users"></i> <span>Siswa</span></a></li>
  
  
