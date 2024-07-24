@@ -43,6 +43,7 @@
                         <tr>
                            <th>#</th>
                            <th>Nama</th>
+                           <th>Tahun Ajaran Masuk</th>
                            <th>Kelas</th>
                            <th>Jenis Kelamin</th>
                            <th>Aksi</th>
@@ -60,10 +61,13 @@
                                      <div class="ml-3">
                                          <div>{{ $item->user->name }}</div>
                                          <div>
-                                             NIS : <a href="#">{{ $item->nis ?? '--' }}</a>
+                                             NISN : <a href="#">{{ $item->nisn ?? '--' }}</a>
                                          </div>
                                      </div>
                                  </div>
+                             </td>
+                             <td>
+                              <div class="badge badge-info"><i class="fas fa-calendar-alt"></i> {{ $item->academicYear->name }}</div>
                              </td>
                               <td>
                                  {{ $item->classroom->name }}

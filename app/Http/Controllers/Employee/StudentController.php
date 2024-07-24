@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\AcademicYear;
 use App\Models\Classroom;
 use App\Models\Student;
 use App\Models\User;
@@ -19,8 +20,8 @@ class StudentController extends Controller
         $data = $this->search($request);
 
         $classrooms = Classroom::all();
-
-        return view('employee.students.index', compact('data', 'classrooms'));
+        $academicYears = AcademicYear::all();
+        return view('employee.students.index', compact('data', 'classrooms', 'academicYears'));
     }
 
 
@@ -30,7 +31,8 @@ class StudentController extends Controller
     public function create()
     {
         $classrooms = Classroom::all();
-        return view('employee.students.create', compact('classrooms'));
+        $academicYears = AcademicYear::all();
+        return view('employee.students.create', compact('classrooms', 'academicYears'));
     }
 
     /**
@@ -48,8 +50,9 @@ class StudentController extends Controller
 
         // Validasi input untuk Student
         $validatedDataStudent = $request->validate([
-            'nis' => ['required', 'unique:students,nis', 'regex:/^[0-9]+$/'],
+            'nisn' => ['required', 'unique:students,nisn', 'regex:/^[0-9]+$/'],
             'classroom_id' => 'required|exists:classrooms,id',
+            'academic_year_id' => 'required|exists:academic_years,id',
             'gender' => 'required|in:Laki-Laki,Perempuan',
             'address' => 'nullable',
             'birth_date' => 'nullable|date',
@@ -65,8 +68,8 @@ class StudentController extends Controller
 
         // Menambahkan password & role default untuk User
         $validatedDataUser['role_id'] = 4;
-        $validatedDataUser['username'] = $validatedDataStudent['nis'];
-        $validatedDataUser['password'] = bcrypt($validatedDataStudent['nis']);
+        $validatedDataUser['username'] = $validatedDataStudent['nisn'];
+        $validatedDataUser['password'] = bcrypt($validatedDataStudent['nisn']);
 
         // Simpan data User ke database
         $user = User::create($validatedDataUser);
@@ -114,7 +117,7 @@ class StudentController extends Controller
 
         // Validasi input untuk Student
         $validatedDataStudent = $request->validate([
-            'nis' => ['required', 'unique:students,nis,' . $student->id, 'regex:/^[0-9]+$/'],
+            'nisn' => ['required', 'unique:students,nisn,' . $student->id, 'regex:/^[0-9]+$/'],
             'classroom_id' => 'required|exists:classrooms,id',
             'gender' => 'required|in:Laki-Laki,Perempuan',
             'address' => 'nullable',
@@ -187,10 +190,14 @@ class StudentController extends Controller
             });
         }
 
-        if ($request->filled('nis')) {
-            $query->where('nis', 'like', '%' . $request->nis . '%');
+        if ($request->filled('nisn')) {
+            $query->where('nisn', 'like', '%' . $request->nisn . '%');
         }
 
+        if ($request->filled('academic_year_id')) {
+            $query->where('academic_year_id', $request->academic_year_id);
+        }
+        
         if ($request->filled('gender')) {
             $query->where('gender', $request->gender);
         }

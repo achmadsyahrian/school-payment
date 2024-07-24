@@ -61,9 +61,9 @@
                            <x-invalid-feedback field='name'></x-invalid-feedback>
                         </div>
                         <div class="form-group col-md-6 col-12">
-                           <label>NIS <x-label-required></x-label-required></label>
-                           <input type="text" class="form-control @error('nis') is-invalid @enderror" name="nis" value="{{ old('nis', $student->nis) }}" placeholder="Masukkan NIS" autocomplete="off">
-                           <x-invalid-feedback field='nis'></x-invalid-feedback>
+                           <label>NISN <x-label-required></x-label-required></label>
+                           <input type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn', $student->nisn) }}" placeholder="Masukkan NISN" autocomplete="off">
+                           <x-invalid-feedback field='nisn'></x-invalid-feedback>
                         </div>
                      </div>
                      <div class="row">

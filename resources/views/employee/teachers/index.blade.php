@@ -43,6 +43,7 @@
                         <tr>
                            <th>#</th>
                            <th>Nama</th>
+                           <th>Wali Kelas</th>
                            <th>Username</th>
                            <th>No Telepon</th>
                            <th>Aksi</th>
@@ -64,6 +65,13 @@
                                          </div>
                                      </div>
                                  </div>
+                             </td>
+                             <td>
+                                 @if ($item->classroom)
+                                    <div class="badge badge-primary"><i class="fas fa-chalkboard"></i> {{ $item->classroom->name }}</div>
+                                 @else 
+                                    --
+                                 @endif
                              </td>
                               <td>
                                  {{ $item->username }}

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('classroom_id');
-            $table->string('nis')->unique();
+            $table->string('nisn')->unique();
             $table->enum('gender', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->string('address')->nullable();
             $table->date('birth_date')->nullable();

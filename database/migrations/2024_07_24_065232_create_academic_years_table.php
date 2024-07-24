@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('academic_years', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->integer('month');
-            $table->integer('year');
-            $table->date('payment_date');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('academic_years');
     }
 };

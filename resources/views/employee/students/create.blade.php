@@ -51,9 +51,9 @@
                            <x-invalid-feedback field='name'></x-invalid-feedback>
                         </div>
                         <div class="form-group col-md-6 col-12">
-                           <label>NIS <x-label-required></x-label-required></label>
-                           <input type="text" class="form-control @error('nis') is-invalid @enderror" name="nis" value="{{ old('nis') }}" placeholder="Masukkan NIS" autocomplete="off">
-                           <x-invalid-feedback field='nis'></x-invalid-feedback>
+                           <label>NISN <x-label-required></x-label-required></label>
+                           <input type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn') }}" placeholder="Masukkan NISN" autocomplete="off">
+                           <x-invalid-feedback field='nisn'></x-invalid-feedback>
                         </div>
                      </div>
                      <div class="row">
@@ -87,12 +87,24 @@
                         </div>
                      </div>
                      <div class="row">
-                        <div class="form-group col-md-6 col-12">
+                        <div class="form-group col-md-3 col-12">
+                           <label>Tahun Ajaran <x-label-required></x-label-required></label>
+                           <select class="form-control select2" name="academic_year_id">
+                              <option selected disabled>Pilih Tahun Ajaran</option>
+                              @foreach ($academicYears as $item)
+                              <option value="{{ $item->id }}" {{ old('academic_year_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                              @endforeach
+                           </select>
+                           @error('academic_year_id')
+                           <div class="form-text text-danger">{{ $message }}</div>
+                           @enderror
+                        </div>
+                        <div class="form-group col-md-4 col-12">
                            <label>Email</label>
                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan Email" autocomplete="off">
                            <x-invalid-feedback field='email'></x-invalid-feedback>
                         </div>
-                        <div class="form-group col-md-6 col-12">
+                        <div class="form-group col-md-5 col-12">
                            <label>No. Handphone</label>
                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Masukkan Nomor" autocomplete="off">
                            <x-invalid-feedback field='phone'></x-invalid-feedback>

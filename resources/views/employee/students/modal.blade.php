@@ -17,13 +17,22 @@
                   </div>
                </div>
                <div class="form-group">
-                  <label>NIS</label>
+                  <label>NISN</label>
                   <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Masukkan NIS" value="{{ request("nis") }}" name="nis" autocomplete="off">
+                     <input type="text" class="form-control" placeholder="Masukkan NISN" value="{{ request("nisn") }}" name="nisn" autocomplete="off">
                   </div>
                </div>
                <div class="form-group">
-                  <label>Kelas <x-label-required></x-label-required></label>
+                  <label>Tahun Ajaran</label>
+                  <select class="form-control selectric" name="academic_year_id">
+                     <option selected disabled>Pilih Tahun Ajaran</option>
+                     @foreach ($academicYears as $item)
+                     <option value="{{ $item->id }}" {{ request('academic_year_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                     @endforeach
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label>Kelas</label>
                   <select class="form-control selectric" name="classroom_id">
                      <option selected disabled>Pilih Kelas</option>
                      @foreach ($classrooms as $item)
@@ -32,24 +41,12 @@
                   </select>
                </div>
                <div class="form-group">
-                  <label>Jenis Kelamin <x-label-required></x-label-required></label>
+                  <label>Jenis Kelamin</label>
                   <select class="form-control selectric" name="gender">
                      <option selected disabled>Pilih Jenis Kelamin</option>
                      <option value="Laki-Laki" {{ request('gender') == 'Laki-Laki' ? 'selected' : '' }}>Laki Laki</option>
                      <option value="Perempuan" {{ request('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                   </select>
-               </div>
-               <div class="form-group">
-                  <label>Email</label>
-                  <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Masukkan Email" value="{{ request("email") }}" name="email" autocomplete="off">
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label>Phone</label>
-                  <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Masukkan Phone" value="{{ request("phone") }}" name="phone" autocomplete="off">
-                  </div>
                </div>
             </div>
             <div class="modal-footer">
