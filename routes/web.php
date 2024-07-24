@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/users', \App\Http\Controllers\Employee\UserController::class)->names('users');
         Route::resource('/teachers', \App\Http\Controllers\Employee\TeacherController::class)->names('teachers');
         Route::resource('/classrooms', \App\Http\Controllers\Employee\ClassroomController::class)->names('classrooms');
+        Route::resource('/students', \App\Http\Controllers\Employee\StudentController::class)->names('students');
     }); 
 
     Route::prefix('teacher')->middleware(['role:3'])->name('teacher.')->group(function () {

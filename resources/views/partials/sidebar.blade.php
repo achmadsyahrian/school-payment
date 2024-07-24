@@ -5,7 +5,7 @@
        </div>
        <div class="sidebar-brand sidebar-brand-sm">
           <a href="/">
-             <img src="{{ asset('assets/img/me/Logopotensiutama.png') }}" width="30" alt="">
+             <img src="{{ asset('assets/img/me/school-logo.png') }}" width="30" alt="">
           </a>
        </div>
        <ul class="sidebar-menu">
@@ -20,7 +20,7 @@
           <li class="{{ Request::is('*users*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.users.index') }}"><i class="fas fa-user-cog"></i> <span>Pegawai</span></a></li>
           <li class="{{ Request::is('*teachers*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.teachers.index') }}"><i class="fas fa-chalkboard-teacher"></i> <span>Wali Kelas</span></a></li>
           <li class="{{ Request::is('*classrooms*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.classrooms.index') }}"><i class="fas fa-chalkboard"></i> <span>Kelas</span></a></li>
-          <li class="{{ Request::is('*students*') ? 'active' : '' }}"><a class="nav-link" href=""><i class="fas fa-users"></i> <span>Siswa</span></a></li>
+          <li class="{{ Request::is('*students*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.students.index') }}"><i class="fas fa-users"></i> <span>Siswa</span></a></li>
  
  
           <li class="menu-header">Transaksi</li>
@@ -30,7 +30,7 @@
  
        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
           <a href="https://instagram.com/_achrian" target="_blank" class="btn btn-primary btn-lg btn-block btn-icon-split">
-             <i class="fab fa-instagram"></i> SMK Negeri Medan
+             <i class="fab fa-instagram"></i> {{ config('app.name') }}
           </a>
        </div>
     </aside>

@@ -109,7 +109,7 @@ class ClassroomController extends Controller
 
     private function search(Request $request)
     {
-        $query = Classroom::query();
+        $query = Classroom::with('teacher', 'students');
 
         if ($request->filled('name')) { $query->where('name', 'like', '%' . $request->name . '%'); }
         if ($request->filled('user_id')) { $query->where('user_id', $request->user_id); }
