@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller;
+use App\Models\AcademicYear;
 use App\Models\Payment;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -12,7 +15,13 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::with('user', 'classroom', 'academicYear')->join('users', 'students.user_id', '=', 'users.id')
+                    ->select('students.*')
+                    ->orderBy('users.name', 'asc')
+                    ->paginate(10);
+        
+        $academicYears = AcademicYear::all();
+        return view('employee.payments.index', compact('students', 'academicYears'));
     }
 
     /**

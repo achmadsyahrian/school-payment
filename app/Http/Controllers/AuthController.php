@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $roles = Role::whereNotIn('id', [1])->get();
+        $roles = Role::all();
         return view('auth.login', compact('roles'));
     }
 
