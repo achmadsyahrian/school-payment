@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css') }}">
-
+    <link rel="stylesheet" href="{{asset('assets/modules/izitoast/css/iziToast.min.css')}}">
+    <script src="{{ asset('assets/modules/izitoast/js/iziToast.min.js') }}"></script>
+    
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 
     <!-- Template CSS -->
@@ -46,6 +48,14 @@
 <body>
     <div id="app">
         @auth
+        {{-- <script>
+            "use strict";
+            iziToast.info({
+               title: 'Hello, world!',
+               message: 'This awesome plugin is made iziToast toastsssr',
+               position: 'topRight'
+            });
+         </script> --}}
             <div class="main-wrapper main-wrapper-1">
                 @include('partials.navbar')
                 @include('partials.sidebar')
@@ -54,12 +64,14 @@
                 </div>
                 @include('partials.footer')
             </div>
+            
         @endauth
         @guest
             <section class="section">
                 @yield('auth')
             </section>
         @endguest
+        
     </div>
 
     <!-- General JS Scripts -->

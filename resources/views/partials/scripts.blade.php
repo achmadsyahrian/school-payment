@@ -18,6 +18,7 @@
 <script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
 <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
+<script src="{{ asset('assets/modules/izitoast/js/iziToast.min.js') }}"></script>
 
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/index.js') }}"></script>

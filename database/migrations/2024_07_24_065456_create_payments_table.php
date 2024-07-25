@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('month');
             $table->date('payment_date');
             $table->unsignedBigInteger('academic_year_id');
-            $table->text('note');
+            // $table->text('note');
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');

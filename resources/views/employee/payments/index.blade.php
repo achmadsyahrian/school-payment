@@ -6,7 +6,7 @@
         <div class="section-header">
             <h1>Pembayaran</h1>
             <div class="section-header-button">
-                <a href="{{ route('employee.classrooms.create') }}" class="btn btn-primary">Tambah</a>
+                {{-- <a href="{{ route('employee.payments.create') }}" class="btn btn-primary">Tambah</a> --}}
             </div>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
@@ -17,7 +17,7 @@
         <div class="section-body">
             <h2 class="section-title">Pembayaran</h2>
             <p class="section-lead">
-                Atur dan perbarui informasi kelas dengan mudah, termasuk biaya SPP dan wali kelas yang bertanggung jawab
+                Kelola dan pantau semua pembayaran SPP siswa dengan mudah dan efisien
             </p>
 
             <div class="row mt-4">
@@ -31,7 +31,7 @@
                                 <div class="input-group">
                                     <button type="button" class="btn btn-primary ml-3" data-toggle="modal"
                                         data-target="#exampleModal">Pencarian Lanjutan</button>
-                                    <form action="{{ route('employee.classrooms.index') }}" method="GET"
+                                    <form action="{{ route('employee.payments.index') }}" method="GET"
                                         style="display:inline;">
                                         <button type="submit" class="btn btn-secondary ml-3">Reset Pencarian</button>
                                     </form>
@@ -46,7 +46,6 @@
                                         <th>Nama Murid</th>
                                         <th>Tahun Ajaran Masuk</th>
                                         <th>Kelas</th>
-                                        <th>Tahun Ajaran</th>
                                         <th>Aksi</th>
                                     </tr>
                                     @forelse ($students as $item)
@@ -80,38 +79,14 @@
                                                 {{ $item->classroom->name }}
                                             </td>
                                             <td>
-                                                <div class="form-group">
-                                                    <select class="form-control selectric" name="user_id">
-                                                       <option selected disabled>Pilih Tahun Ajaran</option>
-                                                       @foreach ($academicYears as $item)
-                                                       <option value="{{ $item->id }}" {{ old('user_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
-                                                       @endforeach
-                                                    </select>
-                                                    @error('user_id')
-                                                    <div class="form-text text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                 </div>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('employee.classrooms.edit', [$item]) }}"
-                                                    class="btn btn-primary btn-action mr-1" data-toggle="tooltip"
-                                                    title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                <form class="d-inline"
-                                                    action="{{ route('employee.classrooms.destroy', $item) }}"
-                                                    method="post" id="delete-data-{{ $item->id }}">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button type="button" class="btn btn-danger btn-action"
-                                                        onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah anda yakin ingin menghapus pegawai ini?', 'delete-data-{{ $item->id }}')"
-                                                        data-toggle="tooltip" title="Hapus"><i
-                                                            class="fas fa-trash"></i></button>
-                                                </form>
+                                                <a href="{{ route('employee.payments.studentDetail', [$item->nisn]) }}"
+                                                    class="btn btn-success btn-action mr-1" data-toggle="tooltip"
+                                                    title="Transaksi"><i class="fas fa-money-bill-wave"></i></a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="100" class="text-center">Data tidak tersedia <i
-                                                    class="far fa-sad-tear"></i></td>
+                                            <td colspan="100" class="text-center">Data tidak tersedia <i class="far fa-sad-tear"></i></td>
                                         </tr>
                                     @endforelse
                                 </table>
@@ -124,5 +99,5 @@
         </div>
     </div>
 
-    {{-- @include('employee.classrooms.modal') --}}
+    @include('employee.payments.modal')
 @endsection

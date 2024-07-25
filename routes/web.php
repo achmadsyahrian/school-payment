@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
       Route::resource('/academic-years', \App\Http\Controllers\Administrator\AcademicYearController::class)->names('academicyears');
       Route::resource('/classrooms', \App\Http\Controllers\Administrator\ClassroomController::class)->names('classrooms');
-      Route::resource('/payments', \App\Http\Controllers\Administrator\PaymentController::class)->names('payments');
+      // Route::resource('/payments', \App\Http\Controllers\Administrator\PaymentController::class)->names('payments');
     }); 
 
     Route::prefix('employee')->middleware(['role:2'])->name('employee.')->group(function () {
@@ -47,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
         // Route::resource('/academic-years', \App\Http\Controllers\Employee\AcademicYearController::class)->names('academicyears');
         Route::resource('/classrooms', \App\Http\Controllers\Employee\ClassroomController::class)->names('classrooms');
         Route::resource('/payments', \App\Http\Controllers\Employee\PaymentController::class)->names('payments');
+        Route::get('/payments/student/{nisn}', [\App\Http\Controllers\Employee\PaymentController::class, 'show'])->name('payments.studentDetail');
+        Route::get('/payments/student/{nisn}/{academicYear}', [\App\Http\Controllers\Employee\PaymentController::class, 'showDetailPayment'])->name('payments.studentDetailPayment');
+        Route::post('/payments/student/{student}/{academicYear}/{month}', [\App\Http\Controllers\Employee\PaymentController::class, 'storePayment'])->name('payments.storePayment');
     }); 
 
     Route::prefix('teacher')->middleware(['role:3'])->name('teacher.')->group(function () {
