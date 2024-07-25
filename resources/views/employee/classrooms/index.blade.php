@@ -6,7 +6,7 @@
         <div class="section-header">
             <h1>Kelas</h1>
             <div class="section-header-button">
-                <a href="{{ route('employee.classrooms.create') }}" class="btn btn-primary">Tambah</a>
+                {{-- <a href="{{ route('employee.classrooms.create') }}" class="btn btn-primary">Tambah</a> --}}
             </div>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
@@ -17,7 +17,7 @@
         <div class="section-body">
             <h2 class="section-title">Kelas</h2>
             <p class="section-lead">
-                Atur dan perbarui informasi kelas dengan mudah, termasuk biaya SPP dan wali kelas yang bertanggung jawab
+                Berikut daftar seluruh kelas siswa yg ada
             </p>
 
             <div class="row mt-4">
@@ -47,7 +47,7 @@
                                         <th>Jumlah Siswa</th>
                                         <th>Wali Kelas</th>
                                         <th>Biaya SPP / Bulan</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                     @forelse ($data as $item)
                                         <tr>
@@ -83,7 +83,7 @@
                                                 <div class="badge badge-success"><i class="fas fa-money-bill-wave"></i> Rp.
                                                     {{ number_format($item->spp_fee, 0, ',', '.') }}</div>
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 <a href="{{ route('employee.classrooms.edit', [$item]) }}"
                                                     class="btn btn-primary btn-action mr-1" data-toggle="tooltip"
                                                     title="Edit"><i class="fas fa-pencil-alt"></i></a>
@@ -97,7 +97,7 @@
                                                         data-toggle="tooltip" title="Hapus"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @empty
                                         <tr>

@@ -7,7 +7,7 @@
    <div class="section-header">
       <h1>Wali Kelas</h1>
       <div class="section-header-button">
-         <a href="{{ route('employee.teachers.create') }}" class="btn btn-primary">Tambah</a>
+         {{-- <a href="{{ route('employee.teachers.create') }}" class="btn btn-primary">Tambah</a> --}}
       </div>
       <div class="section-header-breadcrumb">
          <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
@@ -18,7 +18,7 @@
    <div class="section-body">
       <h2 class="section-title">Wali Kelas</h2>
       <p class="section-lead">
-         Anda memiliki kontrol penuh atas semua akun wali kelas siswa, termasuk opsi mengedit dan menghapus.
+         Anda bisa melihat informasi mengenai wali kelas para siswa untuk kebutuhan lebih lanjut
       </p>
    
       <div class="row mt-4">
@@ -46,7 +46,7 @@
                            <th>Wali Kelas</th>
                            <th>Username</th>
                            <th>No Telepon</th>
-                           <th>Aksi</th>
+                           {{-- <th>Aksi</th> --}}
                         </tr>
                         @forelse ($data as $item)
                            <tr>
@@ -83,14 +83,14 @@
                                     --
                                  @endif
                               </td>
-                              <td>
+                              {{-- <td>
                                  <a href="{{ route('employee.teachers.edit', [$item]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                  <form class="d-inline" action="{{ route('employee.teachers.destroy', $item) }}" method="post" id="delete-data-{{ $item->id }}">
                                     @method('delete')
                                     @csrf
                                     <button type="button" class="btn btn-danger btn-action" onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah anda yakin ingin menghapus wali kelas ini?', 'delete-data-{{ $item->id }}')" data-toggle="tooltip" title="Hapus"><i class="fas fa-trash"></i></button>
                                  </form>
-                               </td>
+                               </td> --}}
                            </tr>
                         @empty
                             <tr>

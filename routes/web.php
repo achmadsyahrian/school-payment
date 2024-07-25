@@ -40,11 +40,11 @@ Route::middleware(['auth'])->group(function () {
     }); 
 
     Route::prefix('employee')->middleware(['role:2'])->name('employee.')->group(function () {
-        Route::resource('/users', \App\Http\Controllers\Employee\UserController::class)->names('users');
+        // Route::resource('/users', \App\Http\Controllers\Employee\UserController::class)->names('users');
         Route::resource('/teachers', \App\Http\Controllers\Employee\TeacherController::class)->names('teachers');
         Route::resource('/students', \App\Http\Controllers\Employee\StudentController::class)->names('students');
 
-        Route::resource('/academic-years', \App\Http\Controllers\Employee\AcademicYearController::class)->names('academicyears');
+        // Route::resource('/academic-years', \App\Http\Controllers\Employee\AcademicYearController::class)->names('academicyears');
         Route::resource('/classrooms', \App\Http\Controllers\Employee\ClassroomController::class)->names('classrooms');
         Route::resource('/payments', \App\Http\Controllers\Employee\PaymentController::class)->names('payments');
     }); 

@@ -30,9 +30,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classrooms = Classroom::all();
-        $academicYears = AcademicYear::all();
-        return view('employee.students.create', compact('classrooms', 'academicYears'));
+        // $classrooms = Classroom::all();
+        // $academicYears = AcademicYear::all();
+        // return view('employee.students.create', compact('classrooms', 'academicYears'));
     }
 
     /**
@@ -40,47 +40,47 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input untuk User
-        $validatedDataUser = $request->validate([
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB
-            'name' => 'required',
-            'email' => 'nullable|email|unique:users,email',
-            'phone' => ['nullable', 'regex:/^[0-9]+$/'],
-        ]);
+        // // Validasi input untuk User
+        // $validatedDataUser = $request->validate([
+        //     'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB
+        //     'name' => 'required',
+        //     'email' => 'nullable|email|unique:users,email',
+        //     'phone' => ['nullable', 'regex:/^[0-9]+$/'],
+        // ]);
 
-        // Validasi input untuk Student
-        $validatedDataStudent = $request->validate([
-            'nisn' => ['required', 'unique:students,nisn', 'regex:/^[0-9]+$/'],
-            'classroom_id' => 'required|exists:classrooms,id',
-            'academic_year_id' => 'required|exists:academic_years,id',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
-            'address' => 'nullable',
-            'birth_date' => 'nullable|date',
-        ]);
+        // // Validasi input untuk Student
+        // $validatedDataStudent = $request->validate([
+        //     'nisn' => ['required', 'unique:students,nisn', 'regex:/^[0-9]+$/'],
+        //     'classroom_id' => 'required|exists:classrooms,id',
+        //     'academic_year_id' => 'required|exists:academic_years,id',
+        //     'gender' => 'required|in:Laki-Laki,Perempuan',
+        //     'address' => 'nullable',
+        //     'birth_date' => 'nullable|date',
+        // ]);
 
-        // Proses upload foto jika ada
-        if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('public/photos/user');
-            $validatedDataUser['photo'] = basename($photoPath);
-        } else {
-            $validatedDataUser['photo'] = null;
-        }
+        // // Proses upload foto jika ada
+        // if ($request->hasFile('photo')) {
+        //     $photoPath = $request->file('photo')->store('public/photos/user');
+        //     $validatedDataUser['photo'] = basename($photoPath);
+        // } else {
+        //     $validatedDataUser['photo'] = null;
+        // }
 
-        // Menambahkan password & role default untuk User
-        $validatedDataUser['role_id'] = 4;
-        $validatedDataUser['username'] = $validatedDataStudent['nisn'];
-        $validatedDataUser['password'] = bcrypt($validatedDataStudent['nisn']);
+        // // Menambahkan password & role default untuk User
+        // $validatedDataUser['role_id'] = 4;
+        // $validatedDataUser['username'] = $validatedDataStudent['nisn'];
+        // $validatedDataUser['password'] = bcrypt($validatedDataStudent['nisn']);
 
-        // Simpan data User ke database
-        $user = User::create($validatedDataUser);
+        // // Simpan data User ke database
+        // $user = User::create($validatedDataUser);
 
-        // Menambahkan user_id ke data Student
-        $validatedDataStudent['user_id'] = $user->id;
+        // // Menambahkan user_id ke data Student
+        // $validatedDataStudent['user_id'] = $user->id;
 
-        // Simpan data Student ke database
-        Student::create($validatedDataStudent);
+        // // Simpan data Student ke database
+        // Student::create($validatedDataStudent);
 
-        return redirect()->route('employee.students.index')->with('success', 'Siswa baru berhasil ditambahkan');
+        // return redirect()->route('employee.students.index')->with('success', 'Siswa baru berhasil ditambahkan');
     }
 
 
@@ -97,8 +97,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $classrooms = Classroom::all();
-        return view('employee.students.edit', compact('student', 'classrooms'));
+        // $classrooms = Classroom::all();
+        // return view('employee.students.edit', compact('student', 'classrooms'));
     }
 
     /**
@@ -106,51 +106,51 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        // Validasi input untuk User
-        $validatedDataUser = $request->validate([
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB
-            'name' => 'required',
-            'email' => 'nullable|email|unique:users,email,' . $student->user_id,
-            'phone' => ['nullable', 'regex:/^[0-9]+$/'],
-            'password' => 'nullable|min:5|confirmed'
-        ]);
+        // // Validasi input untuk User
+        // $validatedDataUser = $request->validate([
+        //     'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB
+        //     'name' => 'required',
+        //     'email' => 'nullable|email|unique:users,email,' . $student->user_id,
+        //     'phone' => ['nullable', 'regex:/^[0-9]+$/'],
+        //     'password' => 'nullable|min:5|confirmed'
+        // ]);
 
-        // Validasi input untuk Student
-        $validatedDataStudent = $request->validate([
-            'nisn' => ['required', 'unique:students,nisn,' . $student->id, 'regex:/^[0-9]+$/'],
-            'classroom_id' => 'required|exists:classrooms,id',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
-            'address' => 'nullable',
-            'birth_date' => 'nullable|date',
-        ]);
+        // // Validasi input untuk Student
+        // $validatedDataStudent = $request->validate([
+        //     'nisn' => ['required', 'unique:students,nisn,' . $student->id, 'regex:/^[0-9]+$/'],
+        //     'classroom_id' => 'required|exists:classrooms,id',
+        //     'gender' => 'required|in:Laki-Laki,Perempuan',
+        //     'address' => 'nullable',
+        //     'birth_date' => 'nullable|date',
+        // ]);
 
-        // Proses upload foto jika ada
-        if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
-            if ($student->user->photo) {
-                Storage::delete('public/photos/user/'. $student->user->photo);
-            }
+        // // Proses upload foto jika ada
+        // if ($request->hasFile('photo')) {
+        //     // Hapus foto lama jika ada
+        //     if ($student->user->photo) {
+        //         Storage::delete('public/photos/user/'. $student->user->photo);
+        //     }
             
-            $photoPath = $request->file('photo')->store('public/photos/user');
-            $validatedDataUser['photo'] = basename($photoPath);
-        } else {
-            $validatedDataUser['photo'] = $student->user->photo;
-        }
+        //     $photoPath = $request->file('photo')->store('public/photos/user');
+        //     $validatedDataUser['photo'] = basename($photoPath);
+        // } else {
+        //     $validatedDataUser['photo'] = $student->user->photo;
+        // }
 
-        // Update password jika ada input baru
-        if ($request->filled('password')) {
-            $validatedDataUser['password'] = bcrypt($request->password);
-        } else {
-            unset($validatedDataUser['password']);
-        }
+        // // Update password jika ada input baru
+        // if ($request->filled('password')) {
+        //     $validatedDataUser['password'] = bcrypt($request->password);
+        // } else {
+        //     unset($validatedDataUser['password']);
+        // }
 
-        // Update data User di database
-        $student->user->update($validatedDataUser);
+        // // Update data User di database
+        // $student->user->update($validatedDataUser);
 
-        // Update data Student di database
-        $student->update($validatedDataStudent);
+        // // Update data Student di database
+        // $student->update($validatedDataStudent);
 
-        return redirect()->route('employee.students.index')->with('success', 'Data siswa berhasil diperbarui');
+        // return redirect()->route('employee.students.index')->with('success', 'Data siswa berhasil diperbarui');
     }
 
     /**
