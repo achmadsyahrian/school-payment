@@ -33,6 +33,8 @@
  
           <li class="menu-header">Transaksi</li>
           <li class="{{ Request::is('*payments*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('employee.payments.index') }}"><i class="fas fa-money-bill-wave"></i> <span>Pembayaran</span></a></li>
+          @elseif (Auth::user()->role_id == 3 && isset(Auth::user()->classroom))
+          <li class="{{ Request::is('*students*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('teacher.students.index') }}"><i class="fas fa-users"></i><span>Siswa</span></a></li>
           @endif
        </ul>
  

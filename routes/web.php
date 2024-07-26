@@ -53,7 +53,10 @@ Route::middleware(['auth'])->group(function () {
     }); 
 
     Route::prefix('teacher')->middleware(['role:3'])->name('teacher.')->group(function () {
-        //
+        Route::resource('/students', \App\Http\Controllers\Teacher\StudentController::class)->names('students');
+        Route::get('/payments/students/{nisn}', [\App\Http\Controllers\Teacher\StudentPaymentController::class, 'show'])->name('payments.studentDetail');
+        Route::get('/payments/students/{nisn}/{academicYear}', [\App\Http\Controllers\Teacher\StudentPaymentController::class, 'showDetailPayment'])->name('payments.studentDetailPayment');
+        Route::post('/payments/students/{student}/{academicYear}/{month}', [\App\Http\Controllers\Teacher\StudentPaymentController::class, 'storePayment'])->name('payments.storePayment');
     }); 
 
     Route::prefix('student')->middleware(['role:4'])->name('student.')->group(function () {
